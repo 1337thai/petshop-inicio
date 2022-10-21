@@ -27,7 +27,8 @@ server.use(mainRoutes)
 
 //página não encontrada
 server.use((req,res) =>{
-    res.send("Página não encontrada")
+    res.send('pages/404')
+
 })
 
 

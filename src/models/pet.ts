@@ -1,4 +1,18 @@
-const data = [
+import { truncate } from "fs"
+
+//criando a variavel PetType 
+type PetType = 'dog' |'cat' | 'fish'
+
+type Pet = {
+    type: PetType,
+    image: string,
+    name: string,
+    color: string,
+    sex: 'Masculino' | 'Feminino'
+}
+
+
+const data: Pet[] = [
     {
         type: 'dog',
         image: 'pastor-alemao.jpg',
@@ -121,3 +135,34 @@ const data = [
 
 
 ]
+
+//retornar todos os pets 
+export const Pet = {
+
+    getAll: () =>{
+        return data 
+    },
+
+    //filtrar os pets por tipo 
+    getFromType: (type: PetType): Pet[] =>{
+        return data.filter(item =>{
+            if(item.type  == type){
+                return true
+            }else{
+                return false 
+            }
+        })
+    },
+
+    //filtrar pot nome
+    getFromName: (name:string): Pet[] =>{
+        return data.filter(item =>{
+            if(item.name.toLowerCase().indexOf(name.toLocaleLowerCase()) > -1){
+                return true
+            }else{
+                return false 
+            }
+        })
+    } 
+
+}
